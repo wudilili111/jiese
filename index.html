@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>戒色 · 重塑自我</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #f8fafc;
+            color: #0b1a2e;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            max-width: 820px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 2rem;
+            box-shadow: 0 20px 60px rgba(0,20,40,0.08);
+            padding: 2.5rem 2rem;
+        }
+        .header { text-align: center; margin-bottom: 2.5rem; }
+        .badge {
+            display: inline-block;
+            background: #eef6ff;
+            color: #1a4c7a;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.03em;
+            padding: 0.3rem 1rem;
+            border-radius: 100px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #0b2b44, #1f5a8e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .subhead {
+            font-size: 1.1rem;
+            color: #3d5670;
+            margin-top: 0.5rem;
+            font-weight: 400;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .intro-card {
+            background: #f1f7fe;
+            border-radius: 1.25rem;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2.5rem;
+            border-left: 6px solid #1f5a8e;
+        }
+        .intro-card p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #143450;
+        }
+        .intro-card strong { color: #0a2d4a; }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-bottom: 2.5rem;
+        }
+        @media (max-width: 600px) {
+            .grid-2 { grid-template-columns: 1fr; gap: 1.5rem; }
+            .container { padding: 1.8rem 1.2rem; }
+            h1 { font-size: 2rem; }
+        }
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0b2b44;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .section-title span {
+            background: #e3edf7;
+            border-radius: 8px;
+            padding: 0.2rem 0.6rem;
+            font-size: 0.8rem;
+            color: #1f5a8e;
+        }
+        .benefit-list, .method-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        .benefit-list li, .method-list li {
+            background: #f8fafc;
+            padding: 0.9rem 1.2rem;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #1d3852;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+            border: 1px solid #edf2f7;
+            transition: background 0.15s;
+        }
+        .benefit-list li:hover, .method-list li:hover { background: #f1f5f9; }
+        .list-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.05rem; }
+        .quote-block {
+            background: #0b1a2e;
+            border-radius: 1.25rem;
+            padding: 2rem 2rem 1.8rem;
+            margin: 2.5rem 0 2.2rem;
+            color: #e9f0f8;
+            text-align: center;
+        }
+        .quote-block blockquote {
+            font-size: 1.3rem;
+            font-weight: 400;
+            line-height: 1.6;
+            letter-spacing: 0.01em;
+        }
+        .quote-block blockquote::before { content: "“"; font-size: 2rem; color: #6d94b8; margin-right: 0.2rem; }
+        .quote-block blockquote::after { content: "”"; font-size: 2rem; color: #6d94b8; margin-left: 0.2rem; }
+        .quote-attribution {
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+            color: #a0bcd9;
+            letter-spacing: 0.02em;
+        }
+        .tracker {
+            background: #f9fcff;
+            border-radius: 1.25rem;
+            padding: 1.8rem 2rem;
+            border: 1px solid #e9eef3;
+            margin-top: 0.5rem;
+        }
+        .tracker-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 1.2rem;
+        }
+        .tracker-header h3 {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #0b2b44;
+        }
+        .tracker-stats {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+            color: #2b4b6a;
+        }
+        .tracker-stats .days-count {
+            font-weight: 700;
+            font-size: 1.6rem;
+            color: #1f5a8e;
+            line-height: 1;
+        }
+        .progress-bar-bg {
+            width: 100%;
+            height: 8px;
+            background: #e3e9f0;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 0.8rem 0 1.4rem;
+        }
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #1f5a8e, #4a8bc2);
+            border-radius: 20px;
+            transition: width 0.4s ease;
+        }
+        .tracker-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+        }
+        .btn {
+            background: white;
+            border: 1px solid #d0dbe8;
+            padding: 0.6rem 1.4rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: #1d3852;
+            cursor: pointer;
+            transition: all 0.15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: #f8fafc;
+        }
+        .btn:hover {
+            background: #eef3f9;
+            border-color: #b0c4d9;
+            transform: translateY(-1px);
+        }
+        .btn-primary {
+            background: #1f5a8e;
+            border-color: #1f5a8e;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #164a73;
+            border-color: #164a73;
+        }
+        .btn-danger {
+            background: #fee9e7;
+            border-color: #fad4d0;
+            color: #a53f3a;
+        }
+        .btn-danger:hover {
+            background: #fcd8d4;
+            border-color: #f5bdb8;
+        }
+        .btn-success {
+            background: #e2f0e6;
+            border-color: #c4dfcd;
+            color: #1f6b3c;
+        }
+        .btn-success:hover {
+            background: #d2e8d9;
+            border-color: #b0d2be;
+        }
+        .footer-note {
+            text-align: center;
+            margin-top: 2.5rem;
+            font-size: 0.85rem;
+            color: #6b85a0;
+            border-top: 1px solid #eef3f8;
+            padding-top: 2rem;
+        }
+        .footer-note a {
+            color: #1f5a8e;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .footer-note a:hover { text-decoration: underline; }
+        .text-muted {
+            color: #5d7a98;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 480px) {
+            .tracker-header { flex-direction: column; align-items: stretch; text-align: center; }
+            .tracker-stats { justify-content: center; }
+            .quote-block blockquote { font-size: 1.1rem; }
+            .intro-card { padding: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="badge">🌱 自我重塑</div>
+            <h1>戒色 · 回归清醒</h1>
+            <p class="subhead">把精力留给真正重要的事，重建内在秩序与专注力</p>
+        </div>
+        <div class="intro-card">
+            <p><strong>戒色</strong> 不是压抑，而是 <strong>转化</strong> —— 将涣散的欲望升维为创造力、行动力与清晰的心智。每一次克制，都是对自我主权的一次确认。</p>
+        </div>
+        <div class="grid-2">
+            <div>
+                <div class="section-title">✦ 戒色的益处 <span>长期</span></div>
+                <ul class="benefit-list">
+                    <li><span class="list-icon">🧠</span><span><strong>心智清晰</strong> — 减少脑雾，决策更果断，注意力更持久</span></li>
+                    <li><span class="list-icon">⚡</span><span><strong>精力充沛</strong> — 身体能量不再被无谓消耗，动力自然涌现</span></li>
+                    <li><span class="list-icon">😌</span><span><strong>情绪稳定</strong> — 减少焦虑与羞耻感，内心更平和笃定</span></li>
+                    <li><span class="list-icon">🎯</span><span><strong>目标感增强</strong> — 将“性驱力”转化为事业、运动与创造的燃料</span></li>
+                </ul>
+            </div>
+            <div>
+                <div class="section-title">✦ 实用方法 <span>行动</span></div>
+                <ul class="method-list">
+                    <li><span class="list-icon">🚿</span><span><strong>冷水澡</strong> — 晨起用冷水冲肩背30秒，快速切断欲望惯性</span></li>
+                    <li><span class="list-icon">🏃</span><span><strong>剧烈运动</strong> — 跑步、深蹲、HIIT，将躁动转化为汗水</span></li>
+                    <li><span class="list-icon">📵</span><span><strong>数字断舍离</strong> — 卸载短视频/社交软件，减少视觉刺激源</span></li>
+                    <li><span class="list-icon">📓</span><span><strong>写日记</strong> — 记录触发情境与情绪，用觉察代替反应</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="quote-block">
+            <blockquote>真正的自由，不是为所欲为，而是能够主宰自己。</blockquote>
+            <div class="quote-attribution">—— 摘自《当下的力量》</div>
+        </div>
+        <div class="tracker">
+            <div class="tracker-header">
+                <h3>📊 我的戒色进度</h3>
+                <div class="tracker-stats">
+                    <span>已坚持</span>
+                    <span class="days-count" id="dayCounter">0</span>
+                    <span>天</span>
+                </div>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+            </div>
+            <div class="tracker-actions">
+                <button class="btn btn-success" id="checkInBtn">✅ 打卡 +1 天</button>
+                <button class="btn btn-danger" id="resetBtn">⟳ 重置进度</button>
+                <button class="btn" id="mockBtn">📅 模拟坚持 7 天</button>
+            </div>
+            <p class="text-muted" style="text-align:center; margin-top:1.2rem; font-size:0.85rem;">每一次打卡，都是对自己的承诺。</p>
+        </div>
+        <div class="footer-note">
+            <p>💙 戒色是通往更完整自我的路 · 你并不孤单</p>
+            <p style="margin-top:0.3rem; font-size:0.8rem; color:#8aa3be;">本页面仅用于自我激励 · 所有数据保存在本地浏览器</p>
+        </div>
+    </div>
+    <script>
+        (function() {
+            const STORAGE_KEY = 'reboot_days_count';
+            const TARGET_DAYS = 30;
+            let days = 0;
+            const dayCounter = document.getElementById('dayCounter');
+            const progressFill = document.getElementById('progressFill');
+            const checkInBtn = document.getElementById('checkInBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const mockBtn = document.getElementById('mockBtn');
+
+            function loadDays() {
+                try {
+                    const stored = localStorage.getItem(STORAGE_KEY);
+                    if (stored !== null) {
+                        const parsed = parseInt(stored, 10);
+                        if (!isNaN(parsed) && parsed >= 0) days = parsed;
+                        else days = 0;
+                    } else days = 0;
+                } catch (_) { days = 0; }
+                if (days > TARGET_DAYS) days = TARGET_DAYS;
+                updateUI();
+            }
+
+            function saveDays() {
+                try { localStorage.setItem(STORAGE_KEY, String(days)); } catch (_) {}
+            }
+
+            function updateUI() {
+                dayCounter.textContent = days;
+                const percent = Math.min((days / TARGET_DAYS) * 100, 100);
+                progressFill.style.width = percent + '%';
+                if (days >= TARGET_DAYS) {
+                    progressFill.style.background = 'linear-gradient(90deg, #1f8e5a, #3cb37a)';
+                } else {
+                    progressFill.style.background = 'linear-gradient(90deg, #1f5a8e, #4a8bc2)';
+                }
+                saveDays();
+            }
+
+            function checkIn() {
+                if (days < TARGET_DAYS) {
+                    days += 1;
+                    if (days > TARGET_DAYS) days = TARGET_DAYS;
+                    updateUI();
+                    checkInBtn.style.transform = 'scale(0.96)';
+                    setTimeout(() => { checkInBtn.style.transform = ''; }, 150);
+                } else {
+                    alert('🎉 你已经达到 30 天目标！继续保持，或重置后重新挑战。');
+                }
+            }
+
+            function resetProgress() {
+                if (days === 0) { alert('你已经是清零状态，不需要重置 😄'); return; }
+                if (confirm('确定要重置所有进度吗？这将归零你的打卡天数。')) {
+                    days = 0;
+                    updateUI();
+                }
+            }
+
+            function mockSevenDays() {
+                let newDays = days + 7;
+                if (newDays > TARGET_DAYS) newDays = TARGET_DAYS;
+                if (newDays === days) { alert('你已经达到或超过目标，无需模拟 😊'); return; }
+                days = newDays;
+                updateUI();
+                mockBtn.style.transform = 'scale(0.96)';
+                setTimeout(() => { mockBtn.style.transform = ''; }, 150);
+            }
+
+            checkInBtn.addEventListener('click', checkIn);
+            resetBtn.addEventListener('click', resetProgress);
+            mockBtn.addEventListener('click', mockSevenDays);
+            loadDays();
+        })();
+    </script>
+</body>
+</html>
